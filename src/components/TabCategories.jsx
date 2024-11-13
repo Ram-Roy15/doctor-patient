@@ -1,11 +1,21 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobsCard from "./JobsCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const TabCategories = () => {
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios("http://localhost:5000/jobs");
+      console.log(data);
+      setJobs(data);
+    };
+    getData();
+  }, []);
   return (
     <div>
-      {" "}
       <Tabs>
         <h1 className="text-center mb-5 font-bold text-3xl">
           Browse the Jobs by Categories
@@ -24,13 +34,31 @@ const TabCategories = () => {
             </TabList>
           </div>
           <TabPanel>
-            <JobsCard></JobsCard>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:grid-cols-4">
+              {jobs
+                .filter((job) => job.category === "Web Development")
+                .map((job) => (
+                  <JobsCard key={job._id} job={job}></JobsCard>
+                ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:grid-cols-4">
+              {jobs
+                .filter((job) => job.category === "Graphics Design")
+                .map((job) => (
+                  <JobsCard key={job._id} job={job}></JobsCard>
+                ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 3</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:grid-cols-4">
+              {jobs
+                .filter((job) => job.category === "Digital Marketing")
+                .map((job) => (
+                  <JobsCard key={job._id} job={job}></JobsCard>
+                ))}
+            </div>
           </TabPanel>
         </div>
       </Tabs>
