@@ -1,4 +1,4 @@
- // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "doctor-patient-bce2e",
   storageBucket: "doctor-patient-bce2e.firebasestorage.app",
   messagingSenderId: "735165301457",
-  appId: "1:735165301457:web:0e78f097a507764488bbf0"
+  appId: "1:735165301457:web:0e78f097a507764488bbf0",
 };
 
 // Initialize Firebase
