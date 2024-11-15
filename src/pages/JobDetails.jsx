@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const JobDetails = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -63,6 +64,7 @@ const JobDetails = () => {
         timeout: 5000,
       });
       console.log(data);
+      toast.success("Bid placed successfully");
     } catch (error) {
       console.error(error);
     }
@@ -97,7 +99,7 @@ const JobDetails = () => {
               <img src={buyer?.photoUrl} alt="" />
             </div>
             <div>
-              <hr className="w-full border-gray-300 border-opacity-100 border-2 h-[60px] mt-2" />
+              <hr className="w-full border-gray-300 border-opacity-100 border-2 h-[60px] " />
             </div>
             <div>
               <p className="mt-2 text-sm  text-gray-600 ">
